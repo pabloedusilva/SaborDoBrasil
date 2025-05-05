@@ -1,0 +1,87 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Sabor do Brasil";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="main-layout">
+    <aside class="sidebar">
+        <img src="https://i.imgur.com/ZKEaB7f.png" alt="Foto de perfil" class="profile-img">
+        <h2>Sabor do Brasil</h2>
+        <div class="stats">
+            <div>
+                <strong>9</strong><br>
+                <span>Quantidade Likes</span>
+            </div>
+            <div>
+                <strong>12</strong><br>
+                <span>Quantidade Dislikes</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="feed">
+        <h2 class="feed-title">Publicações</h2>
+
+        <div class="card">
+            <h3>Titulo do prato 01</h3>
+            <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-petiscos-0.jpg" alt="Prato 01">
+            <div class="info">
+                <span>Local 01</span>
+                <span class="city">Maceió-AL</span>
+            </div>
+            <div class="icons">
+                <span>⬆ 2</span>
+                <span>⬇ 1</span>
+                <span>💬 4</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Titulo do prato 02</h3>
+            <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-comida-de-boteco-0.jpg" alt="Prato 02">
+            <div class="info">
+                <span>Local 02</span>
+                <span class="city">Maceió-AL</span>
+            </div>
+            <div class="icons">
+                <span>⬆ 9</span>
+                <span>⬇ 1</span>
+                <span>💬 10</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Titulo do prato 03</h3>
+            <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-carne-de-porco-0.jpg" alt="Prato 03">
+            <div class="info">
+                <span>Local 03</span>
+                <span class="city">Maceió-AL</span>
+            </div>
+            <div class="icons">
+                <span>⬆ 2</span>
+                <span>⬇ 1</span>
+                <span>💬 2</span>
+            </div>
+        </div>
+    </main>
+
+    <div class="login-area">
+        <button class="login-btn">Entrar</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <span>Sabor do Brasil</span>
+        <span class="footer-icons">
+            <i>📸</i>
+            <i>📱</i>
+            <i>🟠</i>
+            <i>🌐</i>
+        </span>
+        <span>Copyright - 2024</span>
+    </div>
+</footer>
