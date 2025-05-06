@@ -1,87 +1,227 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Sabor do Brasil";
+    ViewData["Title"] = "Página Inicial";
+    Layout = "_Layout";
 }
 
-<link rel="stylesheet" href="~/css/site.css" />
+@{
+    ViewData["Title"] = "Sabor do Brasil | Comida Brasileira";
+}
 
-<div class="main-layout">
-    <aside class="sidebar">
-        <img src="https://i.imgur.com/ZKEaB7f.png" alt="Foto de perfil" class="profile-img">
-        <h2>Sabor do Brasil</h2>
-        <div class="stats">
-            <div>
-                <strong>9</strong><br>
-                <span>Quantidade Likes</span>
-            </div>
-            <div>
-                <strong>12</strong><br>
-                <span>Quantidade Dislikes</span>
+<!-- Barra de Navegação -->
+<nav class="navbar">
+    <div class="container">
+        <a href="#home" class="logo">Sabor do Brasil</a>
+        <div class="nav-links">
+            <a href="#home" class="active">Início</a>
+            <a href="#dishes">Pratos</a>
+            <a href="#" id="open-login">Entrar</a>
+            <a href="#" id="open-register">Cadastrar</a>
+            <a href="#profile" class="profile-link"><i class="fas fa-user"></i></a>
+        </div>
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- Conteúdo Principal (Página Inicial) -->
+<main id="home">
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Descubra os Sabores do Brasil</h1>
+            <p>Experimente a autêntica culinária brasileira em cada mordida</p>
+            <button class="btn-primary" id="explore-btn">Explore os Pratos</button>
+        </div>
+    </header>
+
+    <!-- Prato em Destaque -->
+    <section class="featured-dish" id="dishes">
+        <div class="container">
+            <h2>Prato em Destaque</h2>
+            <div class="dish-card">
+                <div class="dish-image">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1198&q=80" alt="Feijoada">
+                    <div class="dish-overlay">
+                        <button class="like-btn"><i class="fas fa-thumbs-up"></i></button>
+                        <button class="dislike-btn"><i class="fas fa-thumbs-down"></i></button>
+                    </div>
+                </div>
+                <div class="dish-info">
+                    <h3>Feijoada Completa</h3>
+                    <p class="dish-description">A tradicional feijoada brasileira, feita com feijão preto, diversas carnes suínas e acompanhamentos como couve, farofa e laranja.</p>
+                    <div class="dish-stats">
+                        <span class="likes"><i class="fas fa-thumbs-up"></i> 124</span>
+                        <span class="dislikes"><i class="fas fa-thumbs-down"></i> 8</span>
+                    </div>
+                    <div class="dish-comments">
+                        <h4>Comentários</h4>
+                        <div class="comment-form">
+                            <textarea placeholder="Deixe seu comentário..."></textarea>
+                            <button class="btn-secondary">Comentar</button>
+                        </div>
+                        <div class="comments-list">
+                            <div class="comment">
+                                <div class="comment-author">Maria Silva</div>
+                                <div class="comment-text">A feijoada estava incrível! Sabor autêntico e muito bem preparada.</div>
+                            </div>
+                            <div class="comment">
+                                <div class="comment-author">João Oliveira</div>
+                                <div class="comment-text">Melhor feijoada que já comi! Recomendo a todos.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </aside>
+    </section>
+</main>
 
-    <main class="feed">
-        <h2 class="feed-title">Publicações</h2>
-
-        <div class="card">
-            <h3>Titulo do prato 01</h3>
-            <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-petiscos-0.jpg" alt="Prato 01">
-            <div class="info">
-                <span>Local 01</span>
-                <span class="city">Maceió-AL</span>
+<!-- Página de Perfil (Oculto por padrão) -->
+<section id="profile" class="user-profile" style="display: none;">
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar do Usuário">
+                <button class="edit-avatar"><i class="fas fa-camera"></i></button>
             </div>
-            <div class="icons">
-                <span>⬆ 2</span>
-                <span>⬇ 1</span>
-                <span>💬 4</span>
+            <div class="profile-info">
+                <h1>Maria Silva</h1>
+                <p class="member-since">Membro desde: Janeiro 2023</p>
             </div>
         </div>
 
-        <div class="card">
-            <h3>Titulo do prato 02</h3>
-            <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-comida-de-boteco-0.jpg" alt="Prato 02">
-            <div class="info">
-                <span>Local 02</span>
-                <span class="city">Maceió-AL</span>
+        <div class="profile-stats">
+            <div class="stat-card">
+                <div class="stat-value">24</div>
+                <div class="stat-label">Pratos curtidos</div>
             </div>
-            <div class="icons">
-                <span>⬆ 9</span>
-                <span>⬇ 1</span>
-                <span>💬 10</span>
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Pratos não curtidos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Comentários</div>
             </div>
         </div>
 
-        <div class="card">
-            <h3>Titulo do prato 03</h3>
-            <img src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-carne-de-porco-0.jpg" alt="Prato 03">
-            <div class="info">
-                <span>Local 03</span>
-                <span class="city">Maceió-AL</span>
+        <div class="profile-sections">
+            <div class="profile-section">
+                <h2><i class="fas fa-thumbs-up"></i> Pratos Curtidos</h2>
+                <div class="liked-dishes">
+                    <div class="mini-dish-card">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1198&q=80" alt="Feijoada">
+                        <div class="mini-dish-info">
+                            <h3>Feijoada Completa</h3>
+                            <div class="mini-dish-actions">
+                                <button class="btn-like"><i class="fas fa-thumbs-up"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="icons">
-                <span>⬆ 2</span>
-                <span>⬇ 1</span>
-                <span>💬 2</span>
+
+            <div class="profile-section">
+                <h2><i class="fas fa-comment"></i> Meus Comentários</h2>
+                <div class="user-comments">
+                    <div class="user-comment">
+                        <div class="comment-dish">Feijoada Completa</div>
+                        <div class="comment-text">A feijoada estava incrível! Sabor autêntico e muito bem preparada.</div>
+                        <div class="comment-date">15/06/2023</div>
+                    </div>
+                    <div class="user-comment">
+                        <div class="comment-dish">Moqueca de Camarão</div>
+                        <div class="comment-text">Adorei a moqueca, mas poderia ter um pouco mais de tempero.</div>
+                        <div class="comment-date">22/05/2023</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
+</section>
 
-    <div class="login-area">
-        <button class="login-btn">Entrar</button>
+<!-- Modal de Login -->
+<div class="modal" id="login-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Entrar</h2>
+        <form class="auth-form">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Senha</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+        <p class="auth-switch">Não tem uma conta? <a href="#" id="switch-to-register">Cadastre-se</a></p>
     </div>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <span>Sabor do Brasil</span>
-        <span class="footer-icons">
-            <i>📸</i>
-            <i>📱</i>
-            <i>🟠</i>
-            <i>🌐</i>
-        </span>
-        <span>Copyright - 2024</span>
+<!-- Modal de Cadastro -->
+<div class="modal" id="register-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Criar uma conta</h2>
+        <form class="auth-form">
+            <div class="form-group">
+                <label for="register-name">Nome</label>
+                <input type="text" id="register-name" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Senha</label>
+                <input type="password" id="register-password" required>
+            </div>
+            <div class="form-group">
+                <label for="register-confirm-password">Confirmar Senha</label>
+                <input type="password" id="register-confirm-password" required>
+            </div>
+            <button type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+        <p class="auth-switch">Já tem uma conta? <a href="#" id="switch-to-login">Entrar</a></p>
+    </div>
+</div>
+
+<!-- Rodapé -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sabor do Brasil</h3>
+                <p>Celebrando a diversidade da culinária brasileira.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#dishes">Pratos</a></li>
+                    <li><a href="#profile">Perfil</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Sabor do Brasil. Todos os direitos reservados.</p>
+        </div>
     </div>
 </footer>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
