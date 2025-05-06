@@ -89,3 +89,4 @@ C:\Users\user\Documents\GitHub_2\SaborDoBrasil\obj\Debug\net8.0\refint\SaborDoBr
 C:\Users\user\Documents\GitHub_2\SaborDoBrasil\obj\Debug\net8.0\SaborDoBrasil.pdb
 C:\Users\user\Documents\GitHub_2\SaborDoBrasil\obj\Debug\net8.0\SaborDoBrasil.genruntimeconfig.cache
 C:\Users\user\Documents\GitHub_2\SaborDoBrasil\obj\Debug\net8.0\ref\SaborDoBrasil.dll
+D:\SaborDoBrasil\obj\Debug\net8.0\SaborDoBrasil.sourcelink.json

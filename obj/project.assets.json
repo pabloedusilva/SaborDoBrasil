@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\Alunos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub_2\\SaborDoBrasil\\SaborDoBrasil.csproj",
+      "projectUniqueName": "D:\\SaborDoBrasil\\SaborDoBrasil.csproj",
       "projectName": "SaborDoBrasil",
-      "projectPath": "C:\\Users\\user\\Documents\\GitHub_2\\SaborDoBrasil\\SaborDoBrasil.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\GitHub_2\\SaborDoBrasil\\obj\\",
+      "projectPath": "D:\\SaborDoBrasil\\SaborDoBrasil.csproj",
+      "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
+      "outputPath": "D:\\SaborDoBrasil\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
