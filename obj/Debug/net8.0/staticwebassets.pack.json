@@ -17,6 +17,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\SaborDoBrasil\\wwwroot\\img\\publicacao01.png",
+      "PackagePath": "staticwebassets\\img\\publicacao01.png"
+    },
+    {
+      "Id": "D:\\SaborDoBrasil\\wwwroot\\img\\publicacao02.png",
+      "PackagePath": "staticwebassets\\img\\publicacao02.png"
+    },
+    {
+      "Id": "D:\\SaborDoBrasil\\wwwroot\\img\\publicacao03.png",
+      "PackagePath": "staticwebassets\\img\\publicacao03.png"
+    },
+    {
+      "Id": "D:\\SaborDoBrasil\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
       "Id": "D:\\SaborDoBrasil\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

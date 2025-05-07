@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sabor do Brasil</title>
+        <link rel="stylesheet" href="css/site.css">
+
+        <!-- Adicione o CSS do Bootstrap Icons -->
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <style>
+            .logo {
+                width: 90px;
+                height: 900px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
+                border-radius: 50%;
+                overflow: hidden;
+                background: #fff;
+                border: 1px solid #ff8800;
+            }
+
+            .logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            /* Para dispositivos médios e grandes */
+            @media (min-width: 601px) {
+                .logo {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+
+            /* Para dispositivos pequenos */
+            @media (max-width: 600px) {
+                .logo {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Botão fora do header-grid, mas posicionado no topo direito -->
+            <button class="enter-button fixed-enter">Entrar</button>
+            <div class="header-grid">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="img/logo_sabor_do_brasil.png" alt="logo">
+                    </div>
+                    <div class="logo-text">Sabor do Brasil</div>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">9</span>
+                            <span class="stat-label">Quantidade<br>Likes</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span
+                                class="stat-label">Quantidade<br>Dislikes</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="title-section">Publicações</div>
+                    <div class="posts-area">
+                        <div class="posts">
+                            <div class="post">
+                                <div class="post-title">Título do prato 01</div>
+                                <img class="post-image" src="img/publicacao01.png""Prato 01" />
+                                <div class="post-footer">
+                                    <div class="post-location">Local 01</div>
+                                    <div class="post-city">Ipatinga-MG</div>
+                                </div>
+                                <div class="post-stats">
+                                    <div class="post-interactions">
+                                        <div class="post-interaction"><i
+                                                class="bi bi-hand-thumbs-up"></i>
+                                            2</div>
+                                        <div class="post-interaction"><i
+                                                class="bi bi-hand-thumbs-down"></i>
+                                            1</div>
+                                    </div>
+                                    <div class="post-comments"><i
+                                            class="bi bi-chat-text"></i> 4</div>
+                                </div>
+                            </div>
+                            <div class="post">
+                                <div class="post-title">Título do prato 02</div>
+                                <img class="post-image"
+                                    src="img/publicacao02.png""Prato 02" />
+                                <div class="post-footer">
+                                    <div class="post-location">Local 02</div>
+                                    <div class="post-city">Ipatinga-MG</div>
+                                </div>
+                                <div class="post-stats">
+                                    <div class="post-interactions">
+                                        <div class="post-interaction"><i
+                                                class="bi bi-hand-thumbs-up"></i>
+                                            2</div>
+                                        <div class="post-interaction"><i
+                                                class="bi bi-hand-thumbs-down"></i>
+                                            1</div>
+                                    </div>
+                                    <div class="post-comments"><i
+                                            class="bi bi-chat-text"></i>
+                                        4</div>
+                                </div>
+                            </div>
+                            <div class="post">
+                                <div class="post-title">Título do prato 03</div>
+                                <img class="post-image"
+                                    src="img/publicacao03.png"
+                                    alt="Prato 03" />
+                                <div class="post-footer">
+                                    <div class="post-location">Local 03</div>
+                                    <div class="post-city">Ipatinga-MG</div>
+                                </div>
+                                <div class="post-stats">
+                                    <div class="post-interactions">
+                                        <div class="post-interaction"><i
+                                                class="bi bi-hand-thumbs-up"></i>
+                                            2</div>
+                                        <div class="post-interaction"><i
+                                                class="bi bi-hand-thumbs-down"></i>
+                                            1</div>
+                                    </div>
+                                    <div class="post-comments"><i
+                                            class="bi bi-chat-text"></i> 4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-logo">Sabor do Brasil</div>
+                <div class="social-icons">
+                    <div class="social-icon"><i
+                            class="bi bi-instagram"></i></div>
+                    <div class="social-icon"><i
+                            class="bi bi-twitter-x"></i></div>
+                    <div class="social-icon"><i
+                            class="bi bi-whatsapp"></i></div>
+                    <div class="social-icon"><i class="bi bi-globe"></i></div>
+                </div>
+                <div class="copyright">Copyright - 2025</div>
+            </div>
+        </div>
+    </body>
+</html>
