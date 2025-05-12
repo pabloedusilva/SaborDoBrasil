@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZuzDG/GrNjETphleypYtRA3I6Op1ZA6MQjHg901n4lk=",
+  "Hash": "yncHmnzkbPtXyAjG0G1UQ4fRC9TYaxAJX1J0dWz6pSQ=",
   "Source": "SaborDoBrasil",
   "BasePath": "_content/SaborDoBrasil",
   "Mode": "Default",
@@ -16,44 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SaborDoBrasil.styles.css",
-      "SourceId": "SaborDoBrasil",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/SaborDoBrasil",
-      "RelativePath": "SaborDoBrasil.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SaborDoBrasil.styles.css"
-    },
-    {
-      "Identity": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SaborDoBrasil.bundle.scp.css",
-      "SourceId": "SaborDoBrasil",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/SaborDoBrasil",
-      "RelativePath": "SaborDoBrasil.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SaborDoBrasil.bundle.scp.css"
-    },
     {
       "Identity": "D:\\SaborDoBrasil\\wwwroot\\css\\animacoes.css",
       "SourceId": "SaborDoBrasil",
@@ -110,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\SaborDoBrasil\\wwwroot\\img\\logo_sabor_do_brasil.png",
+      "SourceId": "SaborDoBrasil",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SaborDoBrasil\\wwwroot\\",
+      "BasePath": "_content/SaborDoBrasil",
+      "RelativePath": "img/logo_sabor_do_brasil.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo_sabor_do_brasil.png"
     },
     {
       "Identity": "D:\\SaborDoBrasil\\wwwroot\\img\\publicacao01.png",

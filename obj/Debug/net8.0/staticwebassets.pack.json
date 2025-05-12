@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "D:\\SaborDoBrasil\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SaborDoBrasil.bundle.scp.css",
-      "PackagePath": "staticwebassets\\SaborDoBrasil.bundle.scp.css"
-    },
-    {
       "Id": "D:\\SaborDoBrasil\\wwwroot\\css\\animacoes.css",
       "PackagePath": "staticwebassets\\css\\animacoes.css"
     },
@@ -15,6 +11,10 @@
     {
       "Id": "D:\\SaborDoBrasil\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\SaborDoBrasil\\wwwroot\\img\\logo_sabor_do_brasil.png",
+      "PackagePath": "staticwebassets\\img\\logo_sabor_do_brasil.png"
     },
     {
       "Id": "D:\\SaborDoBrasil\\wwwroot\\img\\publicacao01.png",
