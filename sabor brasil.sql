@@ -1,10 +1,6 @@
 -- Criação do banco de dados
-CREATE DATABASE IF NOT EXISTS `pet_do_brasil` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-<<<<<<< HEAD
+CREATE DATABASE IF NOT EXISTS `sabor_brasil` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `sabor_brasil`;
-=======
-USE `pet_do_brasil`;
->>>>>>> fed9dce6b8b4b2aa376be2763b48fe269c042cf0
 
 -- Tabela: usuario
 CREATE TABLE `usuario` (

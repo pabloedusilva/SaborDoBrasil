@@ -1,87 +1,1385 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabor Brasil</title>
-    <link rel="shortcut icon" href="images/logo_sabor_brasil.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div class="container">
-        <aside class="perfil">
-            <img id="logo-empresa" src="images/logo_sabor_brasil.jpg" alt="Logo Sabor Brasil">
-            <h2 id="nome-empresa">Sabor Brasil</h2>
-            <hr style="border-color: #D97014;">
-            <p>Likes: <span id="total-likes">0</span></p>
-            <p>Dislikes: <span id="total-dislikes">0</span></p>
-        </aside>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sabor Brasil</title>
+        <link rel="shortcut icon" href="images/logo_sabor_brasil.jpg"
+            type="image/x-icon">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <style>
+        :root {
+            --primary: #D97014;
+            --primary-light: #f0a15a;
+            --text: #333333;
+            --text-light: #666666;
+            --bg: #f8f8f8;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .app-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--card-bg);
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            width: 280px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid var(--primary);
+        }
+        
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .stats {
+            width: 100%;
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stat-value {
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .main-content {
+            grid-column: 2;
+            padding: 2rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(217, 112, 20, 0.1);
+        }
+        
+        /* Posts Grid */
+        .posts-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza os cards */
+            gap: 2.5rem;
+            width: 100%;
+        }
+        
+        .post-card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 520px; /* Limita a largura máxima */
+            margin: 0 auto;
+            padding: 2rem 2rem 1.5rem 2rem; /* Mais espaçamento interno */
+        }
+        
+        .post-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.13);
+        }
+        
+        .post-image {
+            width: 100%;
+            height: 260px; /* Imagem maior */
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+        }
+        
+        .post-content {
+            padding: 0;
+        }
+        
+        .post-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .action-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+        }
+        
+        .action-btn:hover {
+            color: var(--primary);
+        }
+        
+        .action-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .action-count {
+            font-size: 0.8rem;
+        }
+        
+        .post-edit-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .edit-btn, .delete-btn {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .edit-btn:hover, .delete-btn:hover {
+            opacity: 1;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: var(--bg);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .comment-form {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .comment-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .comment-input:focus {
+            border-color: var(--primary);
+        }
+        
+        .comment-submit {
+            padding: 0 1.25rem;
+            border-radius: 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .comment-submit:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .comments-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .comment-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .comment-text {
+            font-size: 0.9rem;
+        }
+        
+        .comment-user {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .comment-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 450px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-icon:hover {
+            opacity: 1;
+            color: #f0a15a;
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+            
+            .main-content {
+                grid-column: 1;
+                padding: 1.5rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* Utility classes */
+        .hidden {
+            display: none !important;
+        }
+        
+        .active-like {
+            color: var(--primary) !important;
+        }
+        
+        .active-like svg path {
+            fill: var(--primary);
+        }
+        
+        .active-dislike {
+            color: #e74c3c !important;
+        }
+        
+        .active-dislike svg path {
+            fill: #e74c3c;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="brand">
+                    <img src="images/logo_sabor_brasil.jpg" alt="Sabor Brasil"
+                        class="brand-logo">
+                    <h1 class="brand-name">Sabor Brasil</h1>
+                </div>
 
-        <main class="principal">
-            <h2>Publicações</h2>
-            <!-- Os posts serão carregados dinamicamente aqui -->
-        </main>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span>Likes</span>
+                        <span class="stat-value" id="total-likes">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Dislikes</span>
+                        <span class="stat-value" id="total-dislikes">0</span>
+                    </div>
+                </div>
+            </aside>
 
-        <aside class="login">
-            <button id="btn-login">Login</button>
-            <button id="btn-ir-cadastro">Cadastre-se</button>
-            <button id="btn-cadastrar-pet" style="display: none;">Adicionar Publicação</button>
-            <button id="btn-minhas-publicacoes" style="display: none;">Minhas Publicações</button>
-        </aside>
-    </div>
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="header">
+                    <h2 class="page-title">Publicações</h2>
+                    <div class="auth-buttons">
+                        <button id="btn-login"
+                            class="btn btn-primary">Login</button>
+                        <button id="btn-ir-cadastro"
+                            class="btn btn-outline">Cadastre-se</button>
+                        <button id="btn-cadastrar-pet"
+                            class="btn btn-primary hidden">+ Publicação</button>
+                        <button id="btn-minhas-publicacoes"
+                            class="btn btn-outline hidden">Minhas
+                            Publicações</button>
+                    </div>
+                </div>
 
-    <footer>
-        <p>Sabor Brasil</p>
-        <p class="social">
-            <img src="images/Instagram.svg" alt="Instagram" width="20px">
-            <img src="images/Twitter.svg" alt="Twitter" width="20px">
-            <img src="images/Whatsapp.svg" alt="Whatsapp" width="20px">
-            <img src="images/Globe.svg" alt="Globe" width="20px">
-        </p>
-        <p>Copyright-2025</p>
-    </footer>
-
-    <!-- Modal de Login -->
-    <div class="modal-login" id="modal-login">
-        <div class="modal-conteudo">
-            <h2>Login</h2>
-            <input type="text" id="nickname" placeholder="Nickname" required>
-            <input type="password" id="senha" placeholder="Senha" required>
-            <button id="btn-cancelar">Cancelar</button>
-            <button id="btn-entrar">Entrar</button>
-            <p class="mensagem-erro" id="mensagem-erro"></p>
+                <!-- Posts will be loaded here -->
+                <div class="posts-grid" id="posts-container">
+                    <!-- Posts will be dynamically inserted here -->
+                </div>
+            </main>
         </div>
-    </div>
 
-    <!-- Modal de Cadastro de Pet -->
-    <div class="modal-cadastrar-pet" id="modal-cadastrar-pet" style="display: none;">
-        <div class="modal-conteudo">
-            <h2>Adicionar Publicação</h2>
-            <input type="file" id="foto-pet" accept="image/*" required>
-            <input type="text" id="nome-pet" placeholder="Nome da Postagem" required>
-            <input type="text" id="local-pet" placeholder="Legenda" required>
-            <input type="text" id="cidade-pet" placeholder="Localização" required>
-            <button id="btn-cancelar-pet">Cancelar</button>
-            <button id="btn-salvar-pet">Salvar</button>
-            <p class="mensagem-erro" id="mensagem-erro-pet"></p>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Sabor Brasil</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Instagram"><i
+                            class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon" title="Twitter"><i
+                            class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="social-icon" title="Whatsapp"><i
+                            class="bi bi-whatsapp"></i></a>
+                    <a href="#" class="social-icon" title="Website"><i
+                            class="bi bi-globe"></i></a>
+                </div>
+                <p class="copyright">Copyright © 2025</p>
+            </div>
+        </footer>
+
+        <!-- Login Modal -->
+        <div class="modal" id="modal-login">
+            <div class="modal-content">
+                <h3 class="modal-title">Login</h3>
+                <div class="form-group">
+                    <input type="text" id="nickname" class="form-input"
+                        placeholder="Nickname" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="senha" class="form-input"
+                        placeholder="Senha" required>
+                </div>
+                <p class="error-message" id="mensagem-erro"></p>
+                <div class="modal-actions">
+                    <button id="btn-cancelar"
+                        class="btn btn-outline">Cancelar</button>
+                    <button id="btn-entrar"
+                        class="btn btn-primary">Entrar</button>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Modal de Edição de Pet -->
-    <div class="modal-editar-pet" id="modal-editar-pet" style="display: none;">
-        <div class="modal-conteudo">
-            <h2>Editar Pet</h2>
-            <input type="file" id="foto-pet-editar" accept="image/*">
-            <input type="file" id="foto-pet" accept="image/*" required>
-            <input type="text" id="nome-pet" placeholder="Nome da Postagem" required>
-            <input type="text" id="local-pet" placeholder="Legenda" required>
-            <input type="text" id="cidade-pet" placeholder="Localização" required>
-            <button id="btn-cancelar-editar">Cancelar</button>
-            <button id="btn-salvar-editar">Salvar</button>
-            <p class="mensagem-erro" id="mensagem-erro-editar"></p>
+        <!-- Add Post Modal -->
+        <div class="modal" id="modal-cadastrar-pet">
+            <div class="modal-content">
+                <h3 class="modal-title">Nova Publicação</h3>
+                <div class="form-group">
+                    <label for="foto-pet" class="form-label">Imagem</label>
+                    <input type="file" id="foto-pet" class="form-input"
+                        accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="nome-pet" class="form-input"
+                        placeholder="Título da Publicação" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="local-pet" class="form-input"
+                        placeholder="Legenda" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cidade-pet" class="form-input"
+                        placeholder="Localização" required>
+                </div>
+                <p class="error-message" id="mensagem-erro-pet"></p>
+                <div class="modal-actions">
+                    <button id="btn-cancelar-pet"
+                        class="btn btn-outline">Cancelar</button>
+                    <button id="btn-salvar-pet"
+                        class="btn btn-primary">Publicar</button>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <script src="script.js"></script>
-</body>
+        <!-- Edit Post Modal -->
+        <div class="modal" id="modal-editar-pet">
+            <div class="modal-content">
+                <h3 class="modal-title">Editar Publicação</h3>
+                <div class="form-group">
+                    <label for="foto-pet-editar" class="form-label">Nova Imagem
+                        (opcional)</label>
+                    <input type="file" id="foto-pet-editar" class="form-input"
+                        accept="image/*">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="nome-pet-editar" class="form-input"
+                        placeholder="Título da Publicação" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="local-pet-editar" class="form-input"
+                        placeholder="Legenda" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cidade-pet-editar" class="form-input"
+                        placeholder="Localização" required>
+                </div>
+                <p class="error-message" id="mensagem-erro-editar"></p>
+                <div class="modal-actions">
+                    <button id="btn-cancelar-editar"
+                        class="btn btn-outline">Cancelar</button>
+                    <button id="btn-salvar-editar"
+                        class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div class="modal" id="modal-excluir">
+            <div class="modal-content">
+                <h3 class="modal-title">Confirmar Exclusão</h3>
+                <p>Tem certeza que deseja excluir esta publicação?</p>
+                <div class="modal-actions">
+                    <button id="btn-excluir-nao"
+                        class="btn btn-outline">Cancelar</button>
+                    <button id="btn-excluir-sim" class="btn btn-primary"
+                        style="background-color: #e74c3c;">Excluir</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+    // O JavaScript permanece exatamente o mesmo do código original
+    // Apenas atualizei os seletores para corresponder ao novo HTML
+    document.addEventListener("DOMContentLoaded", function () {
+        const modalLogin = document.getElementById("modal-login");
+        const btnCancelar = document.getElementById("btn-cancelar");
+        const btnEntrar = document.getElementById("btn-entrar");
+        const btnIrCadastro = document.getElementById("btn-ir-cadastro");
+        const btnLogin = document.getElementById("btn-login");
+        const mensagemErro = document.getElementById("mensagem-erro");
+        const totalLikes = document.getElementById("total-likes");
+        const totalDislikes = document.getElementById("total-dislikes");
+        const btnCadastrarPet = document.getElementById("btn-cadastrar-pet");
+        const modalCadastrarPet = document.getElementById("modal-cadastrar-pet");
+        const btnCancelarPet = document.getElementById("btn-cancelar-pet");
+        const btnSalvarPet = document.getElementById("btn-salvar-pet");
+        const mensagemErroPet = document.getElementById("mensagem-erro-pet");
+        const modalEditarPet = document.getElementById("modal-editar-pet");
+        const btnCancelarEditar = document.getElementById("btn-cancelar-editar");
+        const btnSalvarEditar = document.getElementById("btn-salvar-editar");
+        const mensagemErroEditar = document.getElementById("mensagem-erro-editar");
+        const btnMinhasPublicacoes = document.getElementById("btn-minhas-publicacoes");
+        const btnVoltarInicial = document.getElementById("btn-voltar-inicial");
+        const modalExcluir = document.getElementById("modal-excluir");
+        let usuarioLogado = localStorage.getItem('usuarioLogado');
+        let usuarioLogadoId = localStorage.getItem('usuarioLogadoId');
+
+        function toggleModal(modal) {
+            modal.classList.toggle('active');
+        }
+
+        function atualizarInterfaceLogin() {
+            if (usuarioLogado) {
+                btnLogin.textContent = `Olá, ${usuarioLogado}`;
+                btnIrCadastro.classList.add('hidden');
+                btnCadastrarPet.classList.remove('hidden');
+                btnMinhasPublicacoes.classList.remove('hidden');
+                
+                // Create logout button if it doesn't exist
+                if (!document.getElementById('btn-sair')) {
+                    const btnSair = document.createElement('button');
+                    btnSair.id = 'btn-sair';
+                    btnSair.className = 'btn btn-outline';
+                    btnSair.textContent = 'Sair';
+                    btnSair.addEventListener('click', () => {
+                        localStorage.removeItem('usuarioLogado');
+                        localStorage.removeItem('usuarioLogadoId');
+                        usuarioLogado = null;
+                        usuarioLogadoId = null;
+                        location.reload();
+                    });
+                    document.querySelector('.auth-buttons').appendChild(btnSair);
+                }
+            } else {
+                btnLogin.textContent = 'Login';
+                btnIrCadastro.classList.remove('hidden');
+                btnCadastrarPet.classList.add('hidden');
+                btnMinhasPublicacoes.classList.add('hidden');
+                const btnSair = document.getElementById('btn-sair');
+                if (btnSair) btnSair.remove();
+            }
+        }
+
+        atualizarInterfaceLogin();
+
+        // Event listeners for modals
+        if (btnLogin) {
+            btnLogin.addEventListener('click', () => {
+                if (!usuarioLogado) toggleModal(modalLogin);
+            });
+        }
+
+        if (btnCancelar) {
+            btnCancelar.addEventListener('click', () => toggleModal(modalLogin));
+        }
+
+        if (btnIrCadastro) {
+            btnIrCadastro.addEventListener('click', () => {
+                window.location.href = "cadastro.html";
+            });
+        }
+
+        if (btnEntrar) {
+            btnEntrar.addEventListener('click', function () {
+                const nickname = document.getElementById("nickname").value;
+                const senha = document.getElementById("senha").value;
+
+                fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nickname, senha })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        localStorage.setItem('usuarioLogado', nickname);
+                        localStorage.setItem('usuarioLogadoId', data.usuarioId);
+                        usuarioLogado = nickname;
+                        usuarioLogadoId = data.usuarioId;
+                        toggleModal(modalLogin);
+                        atualizarInterfaceLogin();
+                        carregarPublicacoes();
+                    } else {
+                        mensagemErro.textContent = data.message;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao fazer login:', error);
+                    mensagemErro.textContent = "Ocorreu um erro. Tente novamente.";
+                });
+            });
+        }
+
+        if (btnCadastrarPet) {
+            btnCadastrarPet.addEventListener('click', () => toggleModal(modalCadastrarPet));
+        }
+
+        if (btnCancelarPet) {
+            btnCancelarPet.addEventListener('click', () => {
+                toggleModal(modalCadastrarPet);
+                limparModalPet();
+            });
+        }
+
+        if (btnSalvarPet) {
+            btnSalvarPet.addEventListener('click', () => {
+                const fotoInput = document.getElementById("foto-pet");
+                const nomePet = document.getElementById("nome-pet").value;
+                const localPet = document.getElementById("local-pet").value;
+                const cidadePet = document.getElementById("cidade-pet").value;
+
+                if (!fotoInput.files[0] || !nomePet || !localPet || !cidadePet) {
+                    mensagemErroPet.textContent = "Todos os campos são obrigatórios.";
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append("foto", fotoInput.files[0]);
+                formData.append("nome_pet", nomePet);
+                formData.append("local", localPet);
+                formData.append("cidade", cidadePet);
+                formData.append("usuarioid", usuarioLogadoId);
+
+                fetch('http://localhost:3000/cadastrar-pet', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        toggleModal(modalCadastrarPet);
+                        limparModalPet();
+                        carregarPublicacoes();
+                    } else {
+                        mensagemErroPet.textContent = data.message;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao cadastrar pet:', error);
+                    mensagemErroPet.textContent = "Ocorreu um erro. Tente novamente.";
+                });
+            });
+        }
+
+        if (btnMinhasPublicacoes) {
+            btnMinhasPublicacoes.addEventListener('click', () => {
+                window.location.href = "minhas-publicacoes.html";
+            });
+        }
+
+        function limparModalPet() {
+            document.getElementById("foto-pet").value = "";
+            document.getElementById("nome-pet").value = "";
+            document.getElementById("local-pet").value = "";
+            document.getElementById("cidade-pet").value = "";
+            mensagemErroPet.textContent = "";
+        }
+
+        async function carregarPublicacoes() {
+            if (window.location.pathname.includes("minhas-publicacoes.html")) {
+                await carregarMinhasPublicacoes();
+            } else {
+                const response = await fetch('/api/publicacoes');
+                const data = await response.json();
+                if (data.success) {
+                    const postsContainer = document.getElementById('posts-container');
+                    postsContainer.innerHTML = '';
+                    
+                    data.publicacoes.forEach(pub => {
+                        const postCard = document.createElement('div');
+                        postCard.className = 'post-card';
+                        postCard.setAttribute('data-publicacao-id', pub.id_publicacao);
+                        postCard.setAttribute('data-usuario-id', pub.usuarioid);
+                        
+                        postCard.innerHTML = `
+                            <img src="${pub.foto}" class="post-image" alt="${pub.nome_pet}">
+                            <div class="post-content">
+                                <h3 class="post-title">${pub.nome_pet}</h3>
+                                <div class="post-meta">
+                                    <span>${pub.local} - ${pub.cidade}</span>
+                                </div>
+                                <div class="post-actions">
+                                    <div class="action-group">
+                                        <button class="action-btn like">
+                                            <i class="bi bi-hand-thumbs-up"></i>
+                                            <span class="action-count likes">0</span>
+                                        </button>
+                                        <button class="action-btn dislike">
+                                            <i class="bi bi-hand-thumbs-down"></i>
+                                            <span class="action-count dislikes">0</span>
+                                        </button>
+                                        <button class="action-btn comentarios">
+                                            <i class="bi bi-chat-right-text"></i>
+                                            <span class="action-count num-comentarios">0</span>
+                                        </button>l
+                                    </div>
+                                    ${usuarioLogadoId && pub.usuarioid == usuarioLogadoId ? `
+                                    <div class="post-edit-actions">
+                                        <img src="images/editar.png" class="edit-btn" alt="Editar">
+                                        <img src="images/excluir.png" class="delete-btn" alt="Excluir">
+                                    </div>
+                                    ` : ''}
+                                </div>
+                                <div class="comments-section">
+                                    <div class="comment-form">
+                                        <input type="text" class="comment-input" placeholder="Escreva um comentário...">
+                                        <button class="comment-submit">Enviar</button>
+                                    </div>
+                                    <div class="comments-list"></div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        postsContainer.appendChild(postCard);
+                    });
+                    
+                    carregarInteracoes();
+                } else {
+                    console.error('Erro ao carregar publicações:', data.message);
+                }
+            }
+        }
+
+        async function carregarMinhasPublicacoes() {
+            if (!usuarioLogadoId) {
+                window.location.href = "index.html";
+                return;
+            }
+            
+            const response = await fetch(`/api/minhas-publicacoes/${usuarioLogadoId}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                const postsContainer = document.getElementById('posts-container');
+                postsContainer.innerHTML = '<h2>Minhas Publicações</h2>';
+                
+                if (data.publicacoes.length === 0) {
+                    postsContainer.innerHTML += '<p>Você ainda não tem publicações.</p>';
+                } else {
+                    data.publicacoes.forEach(pub => {
+                        const postCard = document.createElement('div');
+                        postCard.className = 'post-card';
+                        postCard.setAttribute('data-publicacao-id', pub.id_publicacao);
+                        postCard.setAttribute('data-usuario-id', pub.usuarioid);
+                        
+                        postCard.innerHTML = `
+                            <img src="${pub.foto}" class="post-image" alt="${pub.nome_pet}">
+                            <div class="post-content">
+                                <h3 class="post-title">${pub.nome_pet}</h3>
+                                <div class="post-meta">
+                                    <span>${pub.local} - ${pub.cidade}</span>
+                                </div>
+                                <div class="post-actions">
+                                    <div class="action-group">
+                                        <button class="action-btn like">
+                                            <i class="bi bi-hand-thumbs-up"></i>
+                                            <span class="action-count likes">0</span>
+                                        </button>
+                                        <button class="action-btn dislike">
+                                            <i class="bi bi-hand-thumbs-down"></i>
+                                            <span class="action-count dislikes">0</span>
+                                        </button>
+                                        <button class="action-btn comentarios">
+                                            <i class="bi bi-chat-right-text"></i>
+                                            <span class="action-count num-comentarios">0</span>
+                                        </button>
+                                    </div>
+                                    <div class="post-edit-actions">
+                                        <img src="images/editar.png" class="edit-btn" alt="Editar">
+                                        <img src="images/excluir.png" class="delete-btn" alt="Excluir">
+                                    </div>
+                                </div>
+                                <div class="comments-section">
+                                    <div class="comment-form">
+                                        <input type="text" class="comment-input" placeholder="Escreva um comentário...">
+                                        <button class="comment-submit">Enviar</button>
+                                    </div>
+                                    <div class="comments-list"></div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        postsContainer.appendChild(postCard);
+                    });
+                    
+                    carregarInteracoes();
+                }
+            } else {
+                console.error('Erro ao carregar minhas publicações:', data.message);
+            }
+        }
+
+        async function carregarInteracoes() {
+            const posts = document.querySelectorAll(".post-card");
+            if (!posts.length) return;
+
+            const curtidasResponse = await fetch('/api/curtidas');
+            const curtidasData = await curtidasResponse.json();
+            const curtidas = curtidasData.success ? curtidasData.curtidas : {};
+
+            let usuarioCurtidas = { likes: 0, deslikes: 0, interacoes: {} };
+            if (usuarioLogadoId) {
+                const usuarioCurtidasResponse = await fetch(`/api/curtidas/usuario/${usuarioLogadoId}`);
+                const usuarioCurtidasData = await usuarioCurtidasResponse.json();
+                if (usuarioCurtidasData.success) {
+                    usuarioCurtidas = {
+                        likes: usuarioCurtidasData.likes,
+                        deslikes: usuarioCurtidasData.deslikes,
+                        interacoes: usuarioCurtidasData.interacoes
+                    };
+                }
+            }
+
+            const comentariosResponse = await fetch('/api/comentarios');
+            const comentariosData = await comentariosResponse.json();
+            const comentarios = comentariosData.success ? comentariosData.comentarios : {};
+
+            posts.forEach(post => {
+                const likeBtn = post.querySelector(".like");
+                const dislikeBtn = post.querySelector(".dislike");
+                const likeCount = post.querySelector(".likes");
+                const dislikeCount = post.querySelector(".dislikes");
+                const comentarioBtn = post.querySelector(".comentarios");
+                const numComentarios = post.querySelector(".num-comentarios");
+                const comentarioInput = post.querySelector(".comment-input");
+                const comentarioEnviar = post.querySelector(".comment-submit");
+                const comentarioLista = post.querySelector(".comments-list");
+                const editarBtn = post.querySelector(".edit-btn");
+                const excluirBtn = post.querySelector(".delete-btn");
+                const publicacaoId = post.getAttribute("data-publicacao-id");
+                const commentsSection = post.querySelector(".comments-section");
+
+                const curtida = curtidas[publicacaoId] || { likes: 0, deslikes: 0 };
+                likeCount.textContent = curtida.likes;
+                dislikeCount.textContent = curtida.deslikes;
+
+                const interacaoUsuario = usuarioCurtidas.interacoes[publicacaoId] || 'none';
+                if (interacaoUsuario === 'like') {
+                    likeBtn.classList.add("active-like");
+                    dislikeBtn.classList.remove("active-dislike");
+                } else if (interacaoUsuario === 'deslike') {
+                    dislikeBtn.classList.add("active-dislike");
+                    likeBtn.classList.remove("active-like");
+                } else {
+                    likeBtn.classList.remove("active-like");
+                    dislikeBtn.classList.remove("active-dislike");
+                }
+
+                if (comentarios[publicacaoId]) {
+                    numComentarios.textContent = comentarios[publicacaoId].length;
+                    comentarioLista.innerHTML = '';
+                    comentarios[publicacaoId].forEach(com => {
+                        const novoComentario = document.createElement("div");
+                        novoComentario.className = "comment-item";
+                        novoComentario.setAttribute("data-comentario-id", com.id);
+                        novoComentario.innerHTML = `
+                            <div class="comment-text">
+                                <span class="comment-user">${com.usuario}:</span> ${com.texto}
+                            </div>
+                            ${com.usuario === usuarioLogado ? `
+                            <div class="comment-actions">
+                                <img src="images/editar.png" class="edit-btn" alt="Editar">
+                                <img src="images/excluir.png" class="delete-btn" alt="Excluir">
+                            </div>
+                            ` : ''}
+                        `;
+                        comentarioLista.appendChild(novoComentario);
+                    });
+                    adicionarEventosComentarios(post);
+                } else {
+                    numComentarios.textContent = 0;
+                }
+
+                comentarioBtn.addEventListener("click", function () {
+                    commentsSection.style.display = 
+                        commentsSection.style.display === "none" ? "block" : "none";
+                });
+
+                comentarioEnviar.addEventListener("click", function () {
+                    if (!usuarioLogadoId) {
+                        alert("Você precisa estar logado para comentar!");
+                        return;
+                    }
+                    if (comentarioInput.value.trim() !== "") {
+                        fetch('/comentario', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                usuarioid: usuarioLogadoId,
+                                publicacaoid: publicacaoId,
+                                comentario: comentarioInput.value
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                const novoComentario = document.createElement("div");
+                                novoComentario.className = "comment-item";
+                                novoComentario.setAttribute("data-comentario-id", data.comentarioId);
+                                novoComentario.innerHTML = `
+                                    <div class="comment-text">
+                                        <span class="comment-user">${usuarioLogado}:</span> ${comentarioInput.value}
+                                    </div>
+                                    <div class="comment-actions">
+                                        <img src="images/editar.png" class="edit-btn" alt="Editar">
+                                        <img src="images/excluir.png" class="delete-btn" alt="Excluir">
+                                    </div>
+                                `;
+                                comentarioLista.appendChild(novoComentario);
+                                adicionarEventosComentarios(post);
+                                comentarioInput.value = "";
+                                numComentarios.textContent = parseInt(numComentarios.textContent) + 1;
+                            }
+                        })
+                        .catch(error => console.error("Erro ao salvar comentário:", error));
+                    }
+                });
+
+                likeBtn.addEventListener("click", async function () {
+                    if (!usuarioLogadoId) {
+                        alert("Você precisa estar logado para curtir!");
+                        return;
+                    }
+                    const currentInteracao = usuarioCurtidas.interacoes[publicacaoId] || 'none';
+                    const novaInteracao = currentInteracao === 'like' ? 'none' : 'like';
+                    await atualizarInteracao(publicacaoId, novaInteracao, likeBtn, dislikeBtn, likeCount, dislikeCount, usuarioCurtidas);
+                });
+
+                dislikeBtn.addEventListener("click", async function () {
+                    if (!usuarioLogadoId) {
+                        alert("Você precisa estar logado para descurtir!");
+                        return;
+                    }
+                    const currentInteracao = usuarioCurtidas.interacoes[publicacaoId] || 'none';
+                    const novaInteracao = currentInteracao === 'deslike' ? 'none' : 'deslike';
+                    await atualizarInteracao(publicacaoId, novaInteracao, likeBtn, dislikeBtn, likeCount, dislikeCount, usuarioCurtidas);
+                });
+
+                if (editarBtn) {
+                    editarBtn.addEventListener("click", () => editarPublicacao(post, publicacaoId));
+                }
+
+                if (excluirBtn) {
+                    excluirBtn.addEventListener("click", () => excluirPublicacao(publicacaoId, post));
+                }
+            });
+
+            totalLikes.textContent = usuarioCurtidas.likes;
+            totalDislikes.textContent = usuarioCurtidas.deslikes;
+        }
+
+        function adicionarEventosComentarios(post) {
+            const comentarioLista = post.querySelector(".comments-list");
+            const numComentarios = post.querySelector(".num-comentarios");
+            const comentariosItens = comentarioLista.querySelectorAll(".comment-item");
+
+            comentariosItens.forEach(item => {
+                const editarBtn = item.querySelector(".edit-btn");
+                const excluirBtn = item.querySelector(".delete-btn");
+                const comentarioId = item.getAttribute("data-comentario-id");
+
+                if (editarBtn) {
+                    editarBtn.addEventListener("click", () => {
+                        const textoAtual = item.querySelector(".comment-text").textContent.split(": ")[1];
+                        editarComentario(item, comentarioId, textoAtual);
+                    });
+                }
+
+                if (excluirBtn) {
+                    excluirBtn.addEventListener("click", () => excluirComentario(comentarioId, item, numComentarios));
+                }
+            });
+        }
+
+        async function atualizarInteracao(publicacaoId, tipoInteracao, likeBtn, dislikeBtn, likeCount, dislikeCount, usuarioCurtidas) {
+            const currentInteracao = usuarioCurtidas.interacoes[publicacaoId] || 'none';
+
+            const response = await fetch('/interacao', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    usuarioId: usuarioLogadoId,
+                    publicacaoId: publicacaoId,
+                    tipo_interacao: tipoInteracao
+                })
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                likeCount.textContent = data.curtidas.likes;
+                dislikeCount.textContent = data.curtidas.deslikes;
+                totalLikes.textContent = data.usuarioLikes;
+                totalDislikes.textContent = data.usuarioDislikes;
+
+                usuarioCurtidas.interacoes[publicacaoId] = tipoInteracao;
+
+                if (tipoInteracao === "like") {
+                    likeBtn.classList.add("active-like");
+                    dislikeBtn.classList.remove("active-dislike");
+                } else if (tipoInteracao === "deslike") {
+                    dislikeBtn.classList.add("active-dislike");
+                    likeBtn.classList.remove("active-like");
+                } else {
+                    likeBtn.classList.remove("active-like");
+                    dislikeBtn.classList.remove("active-dislike");
+                }
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function editarComentario(comentarioElement, comentarioId, textoAtual) {
+            const novoTexto = prompt("Edite seu comentário:", textoAtual);
+            if (novoTexto !== null && novoTexto.trim() !== "") {
+                fetch('/editar-comentario', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        comentarioId: comentarioId,
+                        usuarioId: usuarioLogadoId,
+                        texto: novoTexto
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        comentarioElement.querySelector(".comment-text").innerHTML = `
+                            <span class="comment-user">${usuarioLogado}:</span> ${novoTexto}
+                        `;
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => console.error("Erro ao editar comentário:", error));
+            }
+        }
+
+        function excluirComentario(comentarioId, comentarioElement, numComentarios) {
+            toggleModal(modalExcluir);
+
+            document.getElementById("btn-excluir-sim").addEventListener("click", () => {
+                fetch('/excluir-comentario', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        comentarioId: comentarioId,
+                        usuarioId: usuarioLogadoId
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        comentarioElement.remove();
+                        numComentarios.textContent = parseInt(numComentarios.textContent) - 1;
+                        toggleModal(modalExcluir);
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => console.error("Erro ao excluir comentário:", error));
+            });
+
+            document.getElementById("btn-excluir-nao").addEventListener("click", () => {
+                toggleModal(modalExcluir);
+            });
+        }
+
+        function editarPublicacao(postElement, publicacaoId) {
+            const nomePet = postElement.querySelector(".post-title").textContent;
+            const [localPet, cidadePet] = postElement.querySelector(".post-meta span").textContent.split(" - ");
+
+            document.getElementById("nome-pet-editar").value = nomePet;
+            document.getElementById("local-pet-editar").value = localPet;
+            document.getElementById("cidade-pet-editar").value = cidadePet;
+            document.getElementById("foto-pet-editar").value = "";
+            mensagemErroEditar.textContent = "";
+
+            toggleModal(modalEditarPet);
+
+            btnSalvarEditar.onclick = () => {
+                const fotoInput = document.getElementById("foto-pet-editar");
+                const nomePetNovo = document.getElementById("nome-pet-editar").value;
+                const localPetNovo = document.getElementById("local-pet-editar").value;
+                const cidadePetNovo = document.getElementById("cidade-pet-editar").value;
+
+                if (!nomePetNovo || !localPetNovo || !cidadePetNovo) {
+                    mensagemErroEditar.textContent = "Todos os campos de texto são obrigatórios.";
+                    return;
+                }
+
+                const formData = new FormData();
+                if (fotoInput.files[0]) formData.append("foto", fotoInput.files[0]);
+                formData.append("nome_pet", nomePetNovo);
+                formData.append("local", localPetNovo);
+                formData.append("cidade", cidadePetNovo);
+                formData.append("publicacaoId", publicacaoId);
+                formData.append("usuarioId", usuarioLogadoId);
+
+                fetch('/editar-publicacao', {
+                    method: 'PUT',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        postElement.querySelector(".post-title").textContent = nomePetNovo;
+                        postElement.querySelector(".post-meta span").textContent = `${localPetNovo} - ${cidadePetNovo}`;
+                        if (data.foto) postElement.querySelector(".post-image").src = data.foto;
+                        toggleModal(modalEditarPet);
+                        limparModalEditar();
+                        if (window.location.pathname.includes("minhas-publicacoes.html")) carregarMinhasPublicacoes();
+                    } else {
+                        mensagemErroEditar.textContent = data.message;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao editar publicação:', error);
+                    mensagemErroEditar.textContent = "Ocorreu um erro. Tente novamente.";
+                });
+            };
+
+            btnCancelarEditar.onclick = () => {
+                toggleModal(modalEditarPet);
+                limparModalEditar();
+            };
+        }
+
+        function excluirPublicacao(publicacaoId, postElement) {
+            toggleModal(modalExcluir);
+
+            document.getElementById("btn-excluir-sim").addEventListener("click", () => {
+                fetch('/excluir-publicacao', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        publicacaoId: parseInt(publicacaoId),
+                        usuarioId: parseInt(usuarioLogadoId)
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro HTTP: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        postElement.remove();
+                        toggleModal(modalExcluir);
+                        if (window.location.pathname.includes("minhas-publicacoes.html")) carregarMinhasPublicacoes();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao excluir publicação:", error);
+                    alert("Ocorreu um erro ao excluir a publicação. Veja o console para mais detalhes.");
+                });
+            });
+
+            document.getElementById("btn-excluir-nao").addEventListener("click", () => {
+                toggleModal(modalExcluir);
+            });
+        }
+
+        function limparModalEditar() {
+            document.getElementById("foto-pet-editar").value = "";
+            document.getElementById("nome-pet-editar").value = "";
+            document.getElementById("local-pet-editar").value = "";
+            document.getElementById("cidade-pet-editar").value = "";
+            mensagemErroEditar.textContent = "";
+        }
+
+        // Initialize
+        carregarPublicacoes();
+    });
+    </script>
+    </body>
 </html>
