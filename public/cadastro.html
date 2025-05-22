@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Sabor Brasil</title>
-    <link rel="stylesheet" href="css/cadastro.css">
-</head>
-<body>
-    <div class="container-cadastro">
-        <img src="images/logo_sabor_brasil.jpg" alt="Logo Pet do Brasil" width="180">
-        <h2>Cadastro de Tutor</h2>
-        <form id="form-cadastro">
-            <input type="text" id="nome-cadastro" class="input-cadastro" placeholder="Nome Completo" required>
-            <input type="email" id="email-cadastro" class="input-cadastro" placeholder="E-mail" required>
-            <input type="text" id="nickname-cadastro" class="input-cadastro" placeholder="Escolha um Nickname" required>
-            <input type="password" id="senha-cadastro" class="input-cadastro" placeholder="Escolha uma Senha" required>
-            <button type="submit" id="btn-cadastrar-usuario" class="btn-cadastrar">Cadastrar</button>
-            <br><br>
-            <a id="volt" href="index.html">Já tem uma conta? Faça Login</a>
-        </form>
-        <p id="mensagem-erro" style="color: red;"></p>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro - Sabor Brasil</title>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/cadastro.css">
+    </head>
+    <body>
+        <main>
+            <div class="container-cadastro">
+                <img src="images/logo_sabor_brasil.jpg" alt="Logo Pet do Brasil"
+                    width="180" style="border-radius: 50%;">
+                <h2>Cadastro</h2>
+                <h3>Crie uma conta no melhor restaurante do Brasil</h3>
+                <form id="form-cadastro">
+                    <input type="text" id="nome-cadastro" class="input-cadastro"
+                        placeholder="Nome Completo" required>
+                    <input type="email" id="email-cadastro"
+                        class="input-cadastro"
+                        placeholder="E-mail" required>
+                    <input type="text" id="nickname-cadastro"
+                        class="input-cadastro"
+                        placeholder="Escolha um Nickname" required>
+                    <input type="password" id="senha-cadastro"
+                        class="input-cadastro" placeholder="Escolha uma Senha"
+                        required>
+                    <button type="submit" id="btn-cadastrar-usuario"
+                        class="btn-cadastrar">Cadastrar</button>
+                    <br><br>
+                    <a id="volt" href="index.html">Já tem uma conta? Faça
+                        Login</a>
+                </form>
+                <p id="mensagem-erro" style="color: red;"></p>
+            </div>
+        </main>
 
-    <footer>
-        <p>Pet do Brasil</p>
-        <p class="social">
-            <img src="images/Instagram.svg" alt="Instagram" width="20px">
-            <img src="images/Twitter.svg" alt="Twitter" width="20px">
-            <img src="images/Whatsapp.svg" alt="Whatsapp" width="20px">
-            <img src="images/Globe.svg" alt="Globe" width="20px">
-        </p>
-        <p>Copyright-2025</p>
-    </footer>
-    <script src="script.js"></script>
-</body>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Sabor Brasil</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Instagram"><i
+                            class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon" title="Twitter"><i
+                            class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="social-icon" title="Whatsapp"><i
+                            class="bi bi-whatsapp"></i></a>
+                    <a href="#" class="social-icon" title="Website"><i
+                            class="bi bi-globe"></i></a>
+                </div>
+                <p class="copyright">&copy; Copyright - 2025</p>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+            crossorigin="anonymous"></script>
+    </body>
 </html>

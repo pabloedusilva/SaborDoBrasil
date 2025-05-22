@@ -11,7 +11,7 @@
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
-        :root {
+                    :root {
             --primary: #D97014;
             --primary-light: #f0a15a;
             --text: #333333;
@@ -418,22 +418,19 @@
             text-align: center;
         }
         
-        /* Footer */
-        .footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            margin-top: auto;
-        }
+/* Footer */
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #D97014;
+    padding: 1rem; /* Reduzido */
+    text-align: center;
+    margin-top: auto;
+    color: white;
+}
         
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+
         
         .social-links {
             display: flex;
@@ -560,9 +557,7 @@
                     </div>
                 </div>
 
-                <!-- Posts will be loaded here -->
                 <div class="posts-grid" id="posts-container">
-                    <!-- Posts will be dynamically inserted here -->
                 </div>
             </main>
         </div>
@@ -684,9 +679,19 @@
             </div>
         </div>
 
+        <!-- Modal de Mensagem Global -->
+        <div class="modal" id="modal-mensagem">
+            <div class="modal-content">
+                <p id="mensagem-modal-texto"
+                    style="text-align:center; font-size:1.1rem;"></p>
+                <div class="modal-actions">
+                    <button id="btn-fechar-mensagem"
+                        class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+
         <script>
-    // O JavaScript permanece exatamente o mesmo do código original
-    // Apenas atualizei os seletores para corresponder ao novo HTML
     document.addEventListener("DOMContentLoaded", function () {
         const modalLogin = document.getElementById("modal-login");
         const btnCancelar = document.getElementById("btn-cancelar");
@@ -708,9 +713,17 @@
         const btnMinhasPublicacoes = document.getElementById("btn-minhas-publicacoes");
         const btnVoltarInicial = document.getElementById("btn-voltar-inicial");
         const modalExcluir = document.getElementById("modal-excluir");
+        const modalMensagem = document.getElementById("modal-mensagem");
+        const mensagemModalTexto = document.getElementById("mensagem-modal-texto");
+        const btnFecharMensagem = document.getElementById("btn-fechar-mensagem");
         let usuarioLogado = localStorage.getItem('usuarioLogado');
         let usuarioLogadoId = localStorage.getItem('usuarioLogadoId');
 
+        // Função para exibir o modal de mensagem global
+    function mostrarMensagem(mensagem) {
+        mensagemModalTexto.textContent = mensagem;
+        modalMensagem.classList.add('active');
+    }
         function toggleModal(modal) {
             modal.classList.toggle('active');
         }
@@ -1084,7 +1097,7 @@
 
                 comentarioEnviar.addEventListener("click", function () {
                     if (!usuarioLogadoId) {
-                        alert("Você precisa estar logado para comentar!");
+                        mostrarMensagem("Você precisa estar logado para comentar!");
                         return;
                     }
                     if (comentarioInput.value.trim() !== "") {
@@ -1124,7 +1137,7 @@
 
                 likeBtn.addEventListener("click", async function () {
                     if (!usuarioLogadoId) {
-                        alert("Você precisa estar logado para curtir!");
+                        mostrarMensagem("Você precisa estar logado para curtir!");
                         return;
                     }
                     const currentInteracao = usuarioCurtidas.interacoes[publicacaoId] || 'none';
@@ -1134,7 +1147,7 @@
 
                 dislikeBtn.addEventListener("click", async function () {
                     if (!usuarioLogadoId) {
-                        alert("Você precisa estar logado para descurtir!");
+                        mostrarMensagem("Você precisa estar logado para descurtir!");
                         return;
                     }
                     const currentInteracao = usuarioCurtidas.interacoes[publicacaoId] || 'none';
@@ -1211,7 +1224,7 @@
                     dislikeBtn.classList.remove("active-dislike");
                 }
             } else {
-                alert(data.message);
+                mostrarMensagem(data.message);
             }
         }
 
@@ -1234,7 +1247,7 @@
                             <span class="comment-user">${usuarioLogado}:</span> ${novoTexto}
                         `;
                     } else {
-                        alert(data.message);
+                        mostrarMensagem(data.message);
                     }
                 })
                 .catch(error => console.error("Erro ao editar comentário:", error));
@@ -1260,7 +1273,7 @@
                         numComentarios.textContent = parseInt(numComentarios.textContent) - 1;
                         toggleModal(modalExcluir);
                     } else {
-                        alert(data.message);
+                        mostrarMensagem(data.message);
                     }
                 })
                 .catch(error => console.error("Erro ao excluir comentário:", error));
@@ -1355,12 +1368,12 @@
                         toggleModal(modalExcluir);
                         if (window.location.pathname.includes("minhas-publicacoes.html")) carregarMinhasPublicacoes();
                     } else {
-                        alert(data.message);
+                        mostrarMensagem(data.message);
                     }
                 })
                 .catch(error => {
                     console.error("Erro ao excluir publicação:", error);
-                    alert("Ocorreu um erro ao excluir a publicação. Veja o console para mais detalhes.");
+                    mostrarMensagem("Ocorreu um erro ao excluir a publicação. Veja o console para mais detalhes.");
                 });
             });
 
@@ -1379,6 +1392,10 @@
 
         // Initialize
         carregarPublicacoes();
+
+        btnFecharMensagem.addEventListener('click', () => {
+            modalMensagem.classList.remove('active');
+        });
     });
     </script>
     </body>

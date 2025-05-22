@@ -1,35 +1,55 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container-cadastro {
     background-color: white;
-    padding: 40px;
-    border: 4px solid #D97014;
-    border-radius: 8px;
+    padding: 50px;
+    border: 1px solid #D97014;
+    border-radius: 15px;
     width: 350px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin: 20px auto; /* Ajustado */
+}
+
+/* Estilo aprimorado para a logo redonda */
+.logo-redonda {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #D97014;
+    box-shadow: 0 4px 8px rgba(217, 112, 20, 0.3);
+    margin: 0 auto 20px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-redonda:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(217, 112, 20, 0.4);
 }
 
 .container-cadastro h2 {
     color: #D97014;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 2em;
 }
 
 .input-cadastro {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #D97014;
+    border-radius: 5px;
     box-sizing: border-box;
+    font-size: 1em;
 }
 
 .btn-cadastrar {
@@ -37,33 +57,92 @@ body {
     color: white;
     border: none;
     width: 100%;
-    height: 40px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.btn-cadastrar:hover {
+    background-color: #c16312;
 }
 
 #volt {
     color: #c16312;
-    font-size: 10px;
+    font-size: 0.8em;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+#volt:hover {
+    text-decoration: underline;
+}
+
+h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #999999;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     background-color: #D97014;
-    padding: 10px 0;
+    padding: 1rem; /* Reduzido */
+    text-align: center;
+    margin-top: auto; /* Isso empurra o footer para baixo */
     color: white;
 }
 
-.social {
+.social-links {
     display: flex;
-    gap: 30px;
+    gap: 1.5rem;
 }
 
-body {
-    padding-bottom: 60px;
+.social-icon {
+    font-size: 1.5rem;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.social-icon:hover {
+    opacity: 1;
+    color: #f0a15a;
+}
+
+.copyright {
+    font-size: 0.85rem;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .container-cadastro {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .logo-redonda {
+        width: 100px;
+        height: 100px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
 }
