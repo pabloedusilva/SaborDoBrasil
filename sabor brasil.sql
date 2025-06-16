@@ -1,10 +1,8 @@
+DROP DATABASE IF EXISTS `sabor_brasil`;
+
 -- Criação do banco de dados
-CREATE DATABASE IF NOT EXISTS `pet_do_brasil` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-<<<<<<< HEAD
+CREATE DATABASE IF NOT EXISTS `sabor_brasil` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `sabor_brasil`;
-=======
-USE `pet_do_brasil`;
->>>>>>> fed9dce6b8b4b2aa376be2763b48fe269c042cf0
 
 -- Tabela: usuario
 CREATE TABLE `usuario` (
@@ -31,7 +29,7 @@ CREATE TABLE `empresa` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Tabela: publicacao
-CREATE TABLE `publicacao` (
+CREATE TABLE `publicacao` (	
   `id_publicacao` int NOT NULL AUTO_INCREMENT,
   `foto` text,
   `nome_pet` varchar(100) NOT NULL,
@@ -81,12 +79,12 @@ INSERT INTO `usuario` (`id`, `nome`, `email`, `nickname`, `senha`, `createdat`, 
 (4, 'Paulo', 'okok@gmail.com', 'Paulin', '1234', '2025-04-05 03:58:50', '2025-04-05 03:58:50');
 
 INSERT INTO `empresa` (`id_empresa`, `nome`, `logo`, `createdat`, `updatedat`) VALUES
-(1, 'Pet do Brasil', 'images/logo_pet_do_brasil.png', '2025-04-04 23:18:38', '2025-04-04 23:18:38');
+(1, 'Pet do Brasil', 'images/logo/logo_sabor_do_brasil.png', '2025-04-04 23:18:38', '2025-04-04 23:18:38');
 
 INSERT INTO `publicacao` (`id_publicacao`, `foto`, `nome_pet`, `local`, `cidade`, `usuarioid`, `createdat`, `updatedat`) VALUES
-(1, 'images/pet01.png', 'Luna', 'Parque Ibirapuera', 'São Paulo-SP', 1, '2025-04-04 23:18:38', '2025-04-04 23:18:38'),
-(2, 'images/pet02.png', 'Max', 'Praia de Copacabana', 'Rio de Janeiro-RJ', 2, '2025-04-04 23:18:38', '2025-04-04 23:18:38'),
-(3, 'images/pet03.png', 'Bella', 'Parque Barigui', 'Curitiba-PR', 3, '2025-04-04 23:18:38', '2025-04-04 23:18:38'),
+(1, 'images/publicacao/publicacao01.png', 'Prato 1', 'Parque Ibirapuera', 'São Paulo-SP', 1, '2025-04-04 23:18:38', '2025-04-04 23:18:38'),
+(2, 'images/publicacao/publicacao02.png', 'Prato 2', 'Praia de Copacabana', 'Rio de Janeiro-RJ', 2, '2025-04-04 23:18:38', '2025-04-04 23:18:38'),
+(3, 'images/publicacao/publicacao03.png', 'Prato 3', 'Parque Barigui', 'Curitiba-PR', 3, '2025-04-04 23:18:38', '2025-04-04 23:18:38'),
 (4, '/images/1743824718500.jpg', 'pet', 'minas gerais', 'caratinga', 1, '2025-04-05 03:45:18', '2025-04-05 03:45:18');
 
 INSERT INTO `comentario` (`id`, `usuarioid`, `publicacaoid`, `texto`, `data_comentario`) VALUES

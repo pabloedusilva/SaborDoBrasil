@@ -33,7 +33,7 @@ connection.connect((err) => {
         console.error('Erro ao conectar ao banco de dados:', err);
         return;
     }
-    console.log('Conectado ao banco de dados');
+    console.log('Conectado ao banco de dados MYSQL');
 });
 
 // Login
@@ -310,6 +310,18 @@ app.delete('/excluir-publicacao', (req, res) => {
             return res.status(403).json({ success: false, message: 'Você não tem permissão para excluir esta publicação.' });
         }
         res.json({ success: true, message: 'Publicação excluída com sucesso!' });
+    });
+});
+
+// Endpoint para buscar o caminho da logo da empresa
+app.get('/api/logo', (req, res) => {
+    connection.query('SELECT logo FROM empresa WHERE id_empresa = 1', (err, results) => {
+        if (err) return res.status(500).json({ success: false, error: 'Erro ao buscar logo.' });
+        if (results.length > 0) {
+            res.json({ success: true, logo: results[0].logo });
+        } else {
+            res.json({ success: false, error: 'Logo não encontrada.' });
+        }
     });
 });
 

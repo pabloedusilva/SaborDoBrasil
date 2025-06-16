@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sabor Brasil</title>
-        <link rel="shortcut icon" href="images/logo_sabor_brasil.jpg"
+        <link rel="shortcut icon" href="images/logo/logo_sabor_do_brasil.png"
             type="image/x-icon">
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
@@ -523,7 +523,7 @@ footer {
             <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="brand">
-                    <img src="images/logo_sabor_brasil.jpg" alt="Sabor Brasil"
+                    <img id="logo-empresa" src="" alt="Sabor Brasil"
                         class="brand-logo">
                     <h1 class="brand-name">Sabor Brasil</h1>
                 </div>
@@ -1397,6 +1397,28 @@ footer {
             modalMensagem.classList.remove('active');
         });
     });
+
+// Busca dinâmica da logo
+window.addEventListener('DOMContentLoaded', function() {
+    const logoImg = document.getElementById('logo-empresa');
+    if (logoImg) {
+        fetch('/api/logo')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.logo) {
+                    logoImg.src = data.logo;
+                    console.log('Logo carregada do banco:', data.logo);
+                } else {
+                    logoImg.src = 'images/logo/logo_sabor_do_brasil.png';
+                    console.warn('Logo padrão usada.');
+                }
+            })
+            .catch((err) => {
+                logoImg.src = 'images/logo/logo_sabor_do_brasil.png';
+                console.error('Erro ao buscar logo:', err);
+            });
+    }
+});
     </script>
     </body>
 </html>

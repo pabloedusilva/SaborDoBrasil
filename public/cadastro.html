@@ -11,7 +11,7 @@
     <body>
         <main>
             <div class="container-cadastro">
-                <img src="images/logo_sabor_brasil.jpg" alt="Logo Pet do Brasil"
+                <img id="logo-empresa" alt="Logo Sabor Brasil"
                     width="180" style="border-radius: 50%;">
                 <h2>Cadastro</h2>
                 <h3>Crie uma conta no melhor restaurante do Brasil</h3>
@@ -55,6 +55,27 @@
             </div>
         </footer>
         <script src="script.js"></script>
+        <script>
+        // Busca dinâmica da logo
+        window.addEventListener('DOMContentLoaded', function() {
+            const logoImg = document.getElementById('logo-empresa');
+            fetch('/api/logo')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && data.logo) {
+                        logoImg.src = data.logo;
+                        console.log('Logo carregada do banco:', data.logo);
+                    } else {
+                        logoImg.src = 'images/logo/logo_sabor_do_brasil.png';
+                        console.warn('Logo padrão usada.');
+                    }
+                })
+                .catch((err) => {
+                    logoImg.src = 'images/logo/logo_sabor_do_brasil.png';
+                    console.error('Erro ao buscar logo:', err);
+                });
+        });
+        </script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
